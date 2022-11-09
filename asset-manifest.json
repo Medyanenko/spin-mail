@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/spin-mail/static/css/main.b743b656.css",
+    "main.js": "/spin-mail/static/js/main.0b2f4c2b.js",
+    "static/js/787.c614f57d.chunk.js": "/spin-mail/static/js/787.c614f57d.chunk.js",
+    "index.html": "/spin-mail/index.html",
+    "main.b743b656.css.map": "/spin-mail/static/css/main.b743b656.css.map",
+    "main.0b2f4c2b.js.map": "/spin-mail/static/js/main.0b2f4c2b.js.map",
+    "787.c614f57d.chunk.js.map": "/spin-mail/static/js/787.c614f57d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b743b656.css",
+    "static/js/main.0b2f4c2b.js"
+  ]
+}
