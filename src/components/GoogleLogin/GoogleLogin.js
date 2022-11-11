@@ -1,16 +1,17 @@
 import React from 'react'
-import { useState } from "react";
+
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { logIn, addToken } from '../../redux/auth/slice';
 
 const GoogleLogin = () => {
-    const [token, setToken] = useState();
-    const [profile, setProfile] = useState();
+  const dispatch = useDispatch()
   
     const login = useGoogleLogin({
       scope: "https://mail.google.com/",
       onSuccess: async (response) => {
-        setToken(response.access_token);
+      
         try {
           const res = await axios.get(
             "https://www.googleapis.com/oauth2/v3/userinfo",
@@ -20,7 +21,8 @@ const GoogleLogin = () => {
               },
             }
           );
-          setProfile(res.data.email_verified);
+          dispatch(addToken({token:response.access_token}));
+          dispatch(logIn({isLoggedIn:res.data.email_verified}));
         } catch (err) {
           console.log(err);
         }
@@ -35,4 +37,4 @@ const GoogleLogin = () => {
   )
 }
 
-export default GoogleLogin
+export default GoogleLogin;
