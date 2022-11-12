@@ -1,16 +1,29 @@
 import React from "react";
 import s from "./Sidebar.module.css";
-import useAuth from "./../../hooks/user-auth"
-
+import { useEffect } from "react";
+import { getLabels } from "../../redux/labels/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLabelsData } from "../../redux/labels/selector";
+import { selectAuthData } from "../../redux/auth/selector";
 
 const Sidebar = (props) => {
- // const { token } = useAuth();
-const {name} = useAuth();
-console.log(name)
+  const {token} = useSelector(selectAuthData);
+  const dispatch = useDispatch();
+  const { labels } = useSelector(selectLabelsData);
 
-  return <div>
-    
-  </div>;
+  useEffect(() => {
+    dispatch(getLabels(token));
+  }, []);
+  return (
+    <div>
+      <ul>
+        {labels.map((index) => (
+          <li key={index.id}>{index.name}</li>
+        ))}
+      </ul>
+      <ul></ul>
+    </div>
+  );
 };
 
 export default Sidebar;

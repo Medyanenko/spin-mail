@@ -75,3 +75,13 @@ function App() {
   );
 }
 export default App;
+scope
+: 
+"email profile https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/gmail.readonly https://www.googleapis.com/auth/gmail.modify openid https://www.googleapis.com/auth/gmail.labels https://mail.google.com/ https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/gmail.addons.current.message.action"
+token_type
+: 
+"Bearer"
+[[Prototype]]
+: 
+Object
+

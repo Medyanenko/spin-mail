@@ -9,7 +9,7 @@ const GoogleLogin = () => {
   const dispatch = useDispatch()
   
     const login = useGoogleLogin({
-      scope: "https://mail.google.com/",
+      scope: "https://mail.google.com/ https://www.googleapis.com/auth/gmail.labels https://www.googleapis.com/auth/gmail.modify https://www.googleapis.com/auth/gmail.readonly",
       onSuccess: async (response) => {
       
         try {
@@ -24,7 +24,7 @@ const GoogleLogin = () => {
           dispatch(addToken({token:response.access_token}));
           dispatch(logIn({isLoggedIn:res.data.email_verified}));
         } catch (err) {
-          console.log(err);
+
         }
       },
     });

@@ -2,10 +2,11 @@ import React from "react";
 import "./App.css";
 import GoogleLogin from "./components/GoogleLogin/GoogleLogin";
 import Sidebar from "./components/Sidebar/Sidebar";
-import useAuth from "./hooks/user-auth";
+import { useSelector } from "react-redux";
+import { selectAuthData } from "./redux/auth/selector";
 
 function App() {
-  const { isAuth } = useAuth();
+  const { isLoggedIn } = useSelector(selectAuthData);
   //  const [labels, setLabels] = useState([]);
 
   //  useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
   // }
   return (
     <div>
-      {isAuth ? (
+      {isLoggedIn ? (
         <div>
           <h3>Hello</h3>
           <div className="app-wrapper">
