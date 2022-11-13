@@ -1,0 +1,1 @@
+export const selectMessagesData = (state) => state.messages;

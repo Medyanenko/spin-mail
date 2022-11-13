@@ -21,7 +21,6 @@ const Sidebar = (props) => {
           <li key={index.id}>{index.name}</li>
         ))}
       </ul>
-      <ul></ul>
     </div>
   );
 };
