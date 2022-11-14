@@ -21,12 +21,11 @@ const onChangePage = (number) => {
   }, [currentPage]);
   return (
     <div>
-      <ul>
+      {/* <ul>
         {messages.map((index) => (
           <li key={index.id}>{index.threadId}</li>
         ))}
-      </ul>
-      <Pagination onChangePage={onChangePage} />
+      </ul> */}
     </div>
   );
 };

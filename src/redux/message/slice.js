@@ -6,23 +6,26 @@ export const getMessage = createAsyncThunk(
   "message/getMessage",
   async (params) => {
     const { token, messagesIdArray } = params;
-    let responseAll=[];
-    for (let i = 0; i <= messagesIdArray.length; i++) {
-      const response = await axios.get(
-        `https://gmail.googleapis.com/gmail/v1/users/me/messages/${messagesIdArray[i]}`,
-
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      responseAll = [...responseAll, response.data.payload.headers];
-    }
-    console.log(responseAll)
-    return;
+    let responseAll = [];
+    await Promise.all(
+      messagesIdArray.map((id) =>
+        axios
+          .get(
+            `https://gmail.googleapis.com/gmail/v1/users/me/messages/${id}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then((response) => {
+            responseAll = [...responseAll, response.data.payload.headers];
+          })
+      )
+    );
+    console.log("next", responseAll);
+    return responseAll;
   }
-
 );
 
 const messageSlice = createSlice({

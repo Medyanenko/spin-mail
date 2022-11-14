@@ -1,0 +1,12 @@
+.message-block{
+    display: grid;
+    grid-template-areas: "title date";
+    grid-template-columns: 10fr 2fr;
+    grid-gap: 10px;
+}
+.message-title{
+    grid-area: title;
+}
+.message-date{
+    grid-area: date;
+}
