@@ -5,37 +5,31 @@ import { useEffect, useState } from "react";
 import { getMessage } from "../../redux/message/slice";
 import { selectMessagesData } from "../../redux/messages/selector";
 import { selectMessageData } from "../../redux/message/selector";
-import "./Message.css"
+import {setMessage} from "./../../redux/message/slice"
+import MessegeItem from "./MessegeItem";
 
 const Message = () => {
   const { token } = useSelector(selectAuthData);
   const dispatch = useDispatch();
   const { messages, currentPage } = useSelector(selectMessagesData);
   const messagesIdArray = messages.map((index) => index.id);
-  const { message } = useSelector(selectMessageData);
+  const { message, messageItem} = useSelector(selectMessageData);
 
-
-  useEffect(() => {
-    dispatch(getMessage({ token, messagesIdArray }));
-  }, [messages]);
-  return (
-    <div className="message-block">
-      <div className="message-title">
-        {message.map((id) =>
-          id
-            .filter((data) => data.name === "Subject")
-            .map((filteredData, id) =><div key={id}>{filteredData.value}</div>)
-        )}
-      </div>
-      <div className="message-date">
-        {message.map((id) =>
-          id
-            .filter((data) => data.name === "Date")
-            .map((filteredData, id) => <div key={id}>{filteredData.value.slice(4, 11)}</div>)
-        )}
-      </div>
-    </div>
+  const messageValue = message.map((u) =>
+    u.map((data) => Object.values(data))
   );
+  const messageValueObj = messageValue.map((data) =>
+    Object.fromEntries(data)
+  );
+   
+  useEffect(() => {
+    dispatch(setMessage(messageValueObj));
+    dispatch(getMessage({ token, messagesIdArray }));
+
+  }, []);
+   let messagesElements = messageItem.map((u, id) => (<MessegeItem key={id} title={u.Subject} date={u.Date.slice(4, 11)}/>));
+
+  return <div className="message-block"> {messagesElements} </div>;
 };
 
 export default Message;

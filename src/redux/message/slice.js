@@ -11,7 +11,7 @@ export const getMessage = createAsyncThunk(
       messagesIdArray.map((id) =>
         axios
           .get(
-            `https://gmail.googleapis.com/gmail/v1/users/me/messages/${id}`,
+            `https://gmail.googleapis.com/gmail/v1/users/me/messages/${id}?format=metadata&metadataHeaders=Date&metadataHeaders=Subject`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -20,10 +20,10 @@ export const getMessage = createAsyncThunk(
           )
           .then((response) => {
             responseAll = [...responseAll, response.data.payload.headers];
+            console.log("hj", response.data )
           })
       )
     );
-    console.log("next", responseAll);
     return responseAll;
   }
 );
@@ -34,10 +34,14 @@ const messageSlice = createSlice({
     message: [],
     status: false,
     error: false,
+    messageItem:[]
   },
   reducers: {
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
+    },
+    setMessage:(state, action) => {
+      state.messageItem = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -58,5 +62,5 @@ const messageSlice = createSlice({
       });
   },
 });
-export const { setMessage } = messageSlice.actions;
+export const { setMessage} = messageSlice.actions;
 export default messageSlice.reducer;

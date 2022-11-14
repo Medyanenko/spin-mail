@@ -1,11 +1,19 @@
-.message-block{
+.message-item{
     display: grid;
     grid-template-areas: "title date";
     grid-template-columns: 10fr 2fr;
     grid-gap: 10px;
+    cursor: pointer;
 }
+
 .message-title{
     grid-area: title;
+}
+.message-item:hover{
+    box-shadow: inset 1px 0 0 #dadce0,
+    inset -1px 0 0 #dadce0,
+    0 1px 2px 0 rgb(60 64 67 / 30%),
+    0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 .message-date{
     grid-area: date;
