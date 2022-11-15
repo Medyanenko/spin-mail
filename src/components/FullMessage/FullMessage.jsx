@@ -5,6 +5,7 @@ import axios from "axios";
 import { selectAuthData } from "../../redux/auth/selector";
 const FullMessage = () => {
   const { id } = useParams();
+  console.log("params", id)
   const navigate = useNavigate();
   const [fullMessage, setFullMessage] = useState();
   const { token } = useSelector(selectAuthData);
@@ -19,6 +20,7 @@ const FullMessage = () => {
             },
           }
         );
+        console.log(data)
         setFullMessage(data);
       } catch (error) {
         console.error("don't have message");
@@ -32,6 +34,7 @@ const FullMessage = () => {
   }
   return (
     <div className="container">
+      <div>FULL</div>
       <h2>{fullMessage.title}</h2>
       <div className="message-info">
       <p>{fullMessage.date}</p>

@@ -6,7 +6,7 @@ import { getMessage } from "../../redux/message/slice";
 import { selectMessagesData } from "../../redux/messages/selector";
 import { selectMessageData } from "../../redux/message/selector";
 import { setMessage, setMessageItem } from "./../../redux/message/slice";
-import MessegeItem from "./MessegeItem";
+import { Link } from "react-router-dom";
 import "./Message.css";
 
 const Message = () => {
@@ -20,10 +20,6 @@ const Message = () => {
     .map((u) => u.map((data) => Object.values(data)))
     .map((data) => Object.fromEntries(data));
 
-  const onClickMessage = (id) => {
-    console.log(messages[id].id);
-  };
-
   useEffect(() => {
     dispatch(getMessage({ token, messagesIdArray }));
   }, [messages]);
@@ -31,12 +27,14 @@ const Message = () => {
   return (
     <div className="message-block">
       {messageValueObj.map((u, id) => (
-        <div  key={id} onClick={() => onClickMessage(id)}>
+        <Link to={`/message/${messages[id].id}`}>
+        <div  key={u.id}>
           <div className="message-item">
             <div className="message-title">{u.Subject}</div>
             <div className="message-date">{u.Date.slice(4, 11)}</div>
           </div>
         </div>
+        </Link>
       ))}
     </div>
   );
