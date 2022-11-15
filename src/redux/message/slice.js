@@ -20,9 +20,12 @@ export const getMessage = createAsyncThunk(
           )
           .then((response) => {
             responseAll = [...responseAll, response.data.payload.headers];
+            console.log("res", response.data.id)
           })
+       
       )
     );
+ 
     return responseAll;
   }
 );

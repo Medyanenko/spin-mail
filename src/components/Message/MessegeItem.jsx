@@ -1,13 +1,10 @@
-import React from 'react'
-import "./Message.css";
+// import React from 'react'
+//
 
-const MessegeItem = ({title, date}) => {
-  return (
-    <div className="message-item">
-        <div className="message-title">{title}</div>
-        <div className="message-date">{date}</div>
-    </div>
-  )
-}
+// const MessegeItem = ({title, date}) => {
+//   return (
 
-export default MessegeItem
+//   )
+// }
+
+// export default MessegeItem

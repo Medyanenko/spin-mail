@@ -7,6 +7,7 @@ import { selectMessagesData } from "../../redux/messages/selector";
 import { selectMessageData } from "../../redux/message/selector";
 import { setMessage, setMessageItem } from "./../../redux/message/slice";
 import MessegeItem from "./MessegeItem";
+import "./Message.css";
 
 const Message = () => {
   const { token } = useSelector(selectAuthData);
@@ -19,27 +20,24 @@ const Message = () => {
     .map((u) => u.map((data) => Object.values(data)))
     .map((data) => Object.fromEntries(data));
 
-  // console.log(messageValueObj);
-  const onOpenMessage = (messagesIdArray) => {
-    // console.log("jhj", messagesIdArray);
+  const onClickMessage = (id) => {
+    console.log(messages[id].id);
   };
 
   useEffect(() => {
     dispatch(getMessage({ token, messagesIdArray }));
   }, [messages]);
-  let messagesElements = messageValueObj.map((u, id) => (
-    <MessegeItem key={id} title={u.Subject} date={u.Date.slice(4, 11)} />
-  ));
-  if (!messageItem) {
-    return <>"Loading...";</>;
-  }
+
   return (
-    <div
-      className="message-block"
-      onClick={() => onOpenMessage(messagesIdArray)}
-    >
-      {" "}
-      {messagesElements}{" "}
+    <div className="message-block">
+      {messageValueObj.map((u, id) => (
+        <div  key={id} onClick={() => onClickMessage(id)}>
+          <div className="message-item">
+            <div className="message-title">{u.Subject}</div>
+            <div className="message-date">{u.Date.slice(4, 11)}</div>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };

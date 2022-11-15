@@ -12,15 +12,15 @@ const Messages = () => {
   const { token } = useSelector(selectAuthData);
   const dispatch = useDispatch();
   const { messages, currentPage, pageToken } = useSelector(selectMessagesData);
-const onChangePage = (number) => {
+  const onChangePage = (number) => {
     dispatch(setCurrentPage(number));
   };
-  useEffect(() => { 
-    dispatch(getMessages({token, currentPage, pageToken}));
+  useEffect(() => {
+    dispatch(getMessages({ token, currentPage, pageToken }));
   }, [currentPage]);
   return (
     <div>
-      <Message/>
+      <Message />
     </div>
   );
 };
