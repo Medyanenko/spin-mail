@@ -6,8 +6,7 @@ import { getMessages } from "../../redux/messages/slice";
 import { selectMessagesData } from "../../redux/messages/selector";
 import Pagination from "../Pagination/Pagination";
 import { setCurrentPage } from "../../redux/messages/slice";
-import { getMessage} from "../../redux/message/slice";
-
+import Message from "../Message/Message";
 
 const Messages = () => {
   const { token } = useSelector(selectAuthData);
@@ -21,6 +20,7 @@ const onChangePage = (number) => {
   }, [currentPage]);
   return (
     <div>
+      <Message/>
     </div>
   );
 };

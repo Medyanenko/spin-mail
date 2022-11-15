@@ -20,7 +20,6 @@ export const getMessage = createAsyncThunk(
           )
           .then((response) => {
             responseAll = [...responseAll, response.data.payload.headers];
-            console.log("hj", response.data )
           })
       )
     );
@@ -40,10 +39,7 @@ const messageSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
-    setMessage:(state, action) => {
-      state.messageItem = action.payload;
-    },
-  },
+   },
   extraReducers: (builder) => {
     builder
       .addCase(getMessage.pending, (state, action) => {
@@ -51,10 +47,11 @@ const messageSlice = createSlice({
         state.error = null;
       })
       .addCase(getMessage.fulfilled, (state, action) => {
-        state.message = action.payload;
         state.pageToken = action.payload.nextPageToken;
+        state.message = action.payload;
         state.loadingStatus = "idle";
         state.error = null;
+
       })
       .addCase(getMessage.rejected, (state, action) => {
         state.loadingStatus = "failed";
@@ -62,5 +59,5 @@ const messageSlice = createSlice({
       });
   },
 });
-export const { setMessage} = messageSlice.actions;
+
 export default messageSlice.reducer;

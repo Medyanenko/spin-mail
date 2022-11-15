@@ -19,7 +19,6 @@ function App() {
             <Sidebar/>
             <div className="app-wrapper-content">
               <Messages/>
-              <Message/>
               <Pagination/>
             </div>
           </div>
