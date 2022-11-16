@@ -12,9 +12,9 @@ import "./Message.css";
 const Message = () => {
   const { token } = useSelector(selectAuthData);
   const dispatch = useDispatch();
-  const { messages, currentPage } = useSelector(selectMessagesData);
+  const { messages } = useSelector(selectMessagesData);
   const messagesIdArray = messages.map((index) => index.id);
-  const { message, messageItem } = useSelector(selectMessageData);
+  const { message } = useSelector(selectMessageData);
 
   const messageValueObj = message
     .map((u) => u.map((data) => Object.values(data)))
@@ -27,13 +27,11 @@ const Message = () => {
   return (
     <div className="message-block">
       {messageValueObj.map((u, id) => (
-        <Link to={`/message/${messages[id].id}`}>
-        <div  key={u.id}>
+        <Link to={`/message/${messages[id].id}`} key={id}>
           <div className="message-item">
             <div className="message-title">{u.Subject}</div>
             <div className="message-date">{u.Date.slice(4, 11)}</div>
           </div>
-        </div>
         </Link>
       ))}
     </div>

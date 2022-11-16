@@ -36,13 +36,9 @@ const messageSlice = createSlice({
     message: [],
     status: false,
     error: false,
-    messageItem:[]
+    partOneMessages: [],
+    partTwoMessages: [],
   },
-  reducers: {
-    setCurrentPage: (state, action) => {
-      state.currentPage = action.payload;
-    },
-   },
   extraReducers: (builder) => {
     builder
       .addCase(getMessage.pending, (state, action) => {
