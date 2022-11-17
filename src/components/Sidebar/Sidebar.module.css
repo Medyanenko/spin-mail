@@ -13,10 +13,10 @@
   text-decoration: none;
   color: black;
 }
-.LabelsItemLink li {
+.LabelsItemLink {
   padding-left: 20px;
 }
-.LabelsItemLink li:hover {
+.LabelsItemLink:hover {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,

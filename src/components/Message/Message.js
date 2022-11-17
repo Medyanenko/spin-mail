@@ -1,11 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAuthData } from "../../redux/auth/selector";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getMessage } from "../../redux/message/slice";
 import { selectMessagesData } from "../../redux/messages/selector";
 import { selectMessageData } from "../../redux/message/selector";
-import { setMessage, setMessageItem } from "./../../redux/message/slice";
 import { Link } from "react-router-dom";
 import s from"./Message.module.css";
 
@@ -16,12 +15,14 @@ const Message = () => {
   const messagesIdArray = messages.map((index) => index.id);
   const { message } = useSelector(selectMessageData);
 
-  const messageValueObj = message
-    .map((u) => u.map((data) => Object.values(data)))
-    .map((data) => Object.fromEntries(data));
+
+const messageValueObj = message
+  .map((u) => u.map((data) => Object.values(data)))
+  .map((data) => Object.fromEntries(data));
 
   useEffect(() => {
     dispatch(getMessage({ token, messagesIdArray }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [messages]);
 
   return (

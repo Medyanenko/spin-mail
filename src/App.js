@@ -1,12 +1,10 @@
-import React, { Suspense } from "react";
+import React from "react";
 import "./App.css";
 import GoogleLogin from "./components/GoogleLogin/GoogleLogin";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { useSelector } from "react-redux";
 import { selectAuthData } from "./redux/auth/selector";
 import Messages from "./components/Messages/Messages";
-import Message from "./components/Message/Message";
-import Pagination from "./components/Pagination/Pagination";
 import { Routes, Route } from "react-router-dom";
 import FullMessage from "./components/FullMessage/FullMessage";
 

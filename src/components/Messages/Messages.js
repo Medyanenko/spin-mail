@@ -14,29 +14,27 @@ const Messages = () => {
   const { pageToken } = useSelector(selectMessagesData);
   const [changePage, setChangePage] = useState([]);
   const [changePagePrev, setChangePagePrev] = useState(1);
-  console.log("1",pageToken)
-  console.log("2",changePage)
-  console.log("3",changePage[changePagePrev-2])
-  console.log("4",changePagePrev)
+
 const onChangePage = () => {
   setChangePage([...changePage, pageToken])
   setChangePagePrev(changePagePrev + 1)
  
  }
  const onChangePagePrev = () => {
-  console.log("hg")
-
+  setChangePage(changePage.slice(0, -1))
+  setChangePagePrev(changePagePrev - 1)
   dispatch(getMessages({ token, pageToken:changePage[changePagePrev-2] }));
  
  }
 
   useEffect(() => {
     dispatch(getMessages({ token, pageToken }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [changePage]);
 
   return (
     <div>
-      <Pagination onChangePage={onChangePage} onChangePagePrev={onChangePagePrev}/>
+      <Pagination onChangePage={onChangePage} onChangePagePrev={onChangePagePrev} changePagePrev={changePagePrev}/>
       <Message />
     </div>
   );
