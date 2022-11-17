@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/spin-mail/static/css/main.b743b656.css",
-    "main.js": "/spin-mail/static/js/main.0b2f4c2b.js",
+    "main.css": "/spin-mail/static/css/main.250dd9e3.css",
+    "main.js": "/spin-mail/static/js/main.c4b8a2e6.js",
     "static/js/787.c614f57d.chunk.js": "/spin-mail/static/js/787.c614f57d.chunk.js",
+    "static/media/email-bg.jpg": "/spin-mail/static/media/email-bg.be1b2eb58d45f25ea262.jpg",
     "index.html": "/spin-mail/index.html",
-    "main.b743b656.css.map": "/spin-mail/static/css/main.b743b656.css.map",
-    "main.0b2f4c2b.js.map": "/spin-mail/static/js/main.0b2f4c2b.js.map",
+    "main.250dd9e3.css.map": "/spin-mail/static/css/main.250dd9e3.css.map",
+    "main.c4b8a2e6.js.map": "/spin-mail/static/js/main.c4b8a2e6.js.map",
     "787.c614f57d.chunk.js.map": "/spin-mail/static/js/787.c614f57d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b743b656.css",
-    "static/js/main.0b2f4c2b.js"
+    "static/css/main.250dd9e3.css",
+    "static/js/main.c4b8a2e6.js"
   ]
 }
