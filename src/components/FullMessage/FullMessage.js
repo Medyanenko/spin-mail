@@ -3,13 +3,12 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { selectAuthData } from "../../redux/auth/selector";
+import s from "./FullMessage.module.css"
 const FullMessage = () => {
   const { id } = useParams();
-  console.log("params", id)
   const navigate = useNavigate();
   const [fullTextMessage, setFullTextMessage] = useState();
   const [metaDataMessage, setMetaDataMessage] = useState();
-  console.log("FullMessage", metaDataMessage)
   const { token } = useSelector(selectAuthData);
   useEffect(() => {
     async function fetchMessage() {
@@ -22,9 +21,7 @@ const FullMessage = () => {
             },
           }
         );
-        // console.log(data.payload.headers)
-
-        setMetaDataMessage( Object.fromEntries((data.payload.headers).map((data) => Object.values(data))));
+           setMetaDataMessage( Object.fromEntries((data.payload.headers).map((data) => Object.values(data))));
         setFullTextMessage(data);
       } catch (error) {
         console.error("don't have message");
@@ -38,17 +35,16 @@ const FullMessage = () => {
     return <>"Loading...";</>;
   }
   return (
-    <div className="container">
-      <div>FULL</div>
-      <h2>{metaDataMessage.Subject}</h2>
-      <div className="message-info">
+    <div className={s.fullMessageBlock}>
+      <h2  className={s.fullMessageTitle}>{metaDataMessage.Subject}</h2>
+      <div className={s.fullMessageInfo}>
       <p>{metaDataMessage.Date}</p>
       <p>{metaDataMessage.From}</p>
       <p>{metaDataMessage.To}</p>
       </div>
-      <div>{fullTextMessage.snippet}</div>
+      <div className={s.fullMessageText}>{fullTextMessage.snippet}</div>
 
-      <Link to="/">
+      <Link to="/" className={s.fullMessageButton}>
         <span>Назад</span>
       </Link>
     </div>

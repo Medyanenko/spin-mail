@@ -1,0 +1,11 @@
+.paginationBlock{
+    padding: 0px 15px 20px 0;
+    text-align: end;
+
+}
+.paginationBlockButton{
+    width: 50px;
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: 20px;
+}

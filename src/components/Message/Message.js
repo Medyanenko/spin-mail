@@ -7,7 +7,7 @@ import { selectMessagesData } from "../../redux/messages/selector";
 import { selectMessageData } from "../../redux/message/selector";
 import { setMessage, setMessageItem } from "./../../redux/message/slice";
 import { Link } from "react-router-dom";
-import "./Message.css";
+import s from"./Message.module.css";
 
 const Message = () => {
   const { token } = useSelector(selectAuthData);
@@ -25,12 +25,12 @@ const Message = () => {
   }, [messages]);
 
   return (
-    <div className="message-block">
+    <div className={s.messageBlock}>
       {messageValueObj.map((u, id) => (
         <Link to={`/message/${messages[id].id}`} key={id}>
-          <div className="message-item">
-            <div className="message-title">{u.Subject}</div>
-            <div className="message-date">{u.Date.slice(4, 11)}</div>
+          <div className={s.messageItem}>
+            <div className={s.messageiTtle}>{u.Subject}</div>
+            <div className={s.messageDate}>{u.Date.slice(4, 11)}</div>
           </div>
         </Link>
       ))}

@@ -1,31 +1,28 @@
-.nav {
-  padding-top: 30px;
+.LablesBlock {
 }
 
-.item {
-  padding: 10px;
-  margin: 0 10px 0 0;
-  border-radius: 8px;
+.LabelsItem {
   line-height: 1.75;
   min-width: 64px;
   cursor: pointer;
+  margin-top: 0;
+  list-style-type: none;
+  padding-left: 20px;
 }
-.link {
+.LabelsItemLink {
   text-decoration: none;
-  color: #fff;
+  color: black;
 }
-.item:hover {
+.LabelsItemLink li {
+  padding-left: 20px;
+}
+.LabelsItemLink li:hover {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(255, 255, 255, 0.08);
-}
-.active {
-  color: rgb(16, 185, 129);
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgb(255, 255, 255);
+  font-weight: bold;
+  padding: 2px;
+  border-radius: 5px;
 }

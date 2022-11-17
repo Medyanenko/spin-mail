@@ -1,0 +1,20 @@
+.startPage {
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: rgb(248 248 248/ 99%);
+}
+.startPageButton {
+  background-color: #46576b;
+  position: absolute;
+  top: 50%;
+  margin-top: -36px;
+  cursor: pointer;
+}
+.startPageText {
+  color: white;
+  font-size: 20px;
+}

@@ -4,6 +4,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { logIn, addToken } from '../../redux/auth/slice';
+import s from "./GoogleLogin.module.css"
 
 const GoogleLogin = () => {
   const dispatch = useDispatch()
@@ -29,9 +30,9 @@ const GoogleLogin = () => {
       },
     });
   return (
-    <div>
-    <button onClick={() => login()}>
-      <p> Sign in with Google 🚀 </p>
+    <div className={s.startPage}>
+    <button className={s.startPageButton} onClick={() => login()}>
+      <p className={s.startPageText}> Sign in with Google 🚀 </p>
     </button>
   </div>
   )

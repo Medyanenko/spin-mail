@@ -13,11 +13,10 @@ import FullMessage from "./components/FullMessage/FullMessage";
 function App() {
   const { isLoggedIn } = useSelector(selectAuthData);
   return (
-    <div>
+    <div className="main-block">
       {isLoggedIn ? (
-        <div>
-          <h3>Hello</h3>
           <div className="app-wrapper">
+            {/* <Route path="/labels/:label" element={<Sidebar />} />  */}
             <Sidebar />
             <div className="app-wrapper-content">
               <Routes>
@@ -26,9 +25,10 @@ function App() {
               </Routes>
             </div>
           </div>
-        </div>
       ) : (
-        <GoogleLogin />
+        <div className="start-block">
+        <GoogleLogin/>
+        </div>
       )}
     </div>
   );

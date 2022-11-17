@@ -36,8 +36,6 @@ const messageSlice = createSlice({
     message: [],
     status: false,
     error: false,
-    partOneMessages: [],
-    partTwoMessages: [],
   },
   extraReducers: (builder) => {
     builder

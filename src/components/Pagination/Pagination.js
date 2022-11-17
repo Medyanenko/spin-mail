@@ -1,30 +1,21 @@
 import React from "react";
-import ReactPaginate from "react-paginate";
+import s from "./Pagination.module.css"
 
-const Pagination = ({ onChangePage }) => {
+const Pagination = ({ onChangePage, onChangePagePrev }) => {
   return (
-    <div className="pagination-block">
-      <button
-       onClick={(event) =>console.log(event)}
+    <div className={s.paginationBlock}>
+      <button className={s.paginationBlockButton}
+       onClick={(e) => onChangePagePrev(e)}
       >
         &lt;&lt;
       </button>
 
-      <button
-       onClick={(event) => onChangePage(event)}
+      <button className={s.paginationBlockButton}
+       onClick={(e) => onChangePage(e)}
       >
         &gt;&gt;
       </button>
     </div>
-    // <ReactPaginate
-    //   // className={s.root}
-    //   breakLabel="..."
-    //   nextLabel=">"
-    //   onPageChange={(event) =>onChangePage(event.selected + 1)}
-    //   pageRangeDisplayed={10}
-    //   pageCount={2}
-    //   previousLabel="<"
-    // />
   );
 };
 

@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { getMessages } from "../../redux/messages/slice";
 import { selectMessagesData } from "../../redux/messages/selector";
 import Pagination from "../Pagination/Pagination";
-import { setCurrentPage } from "../../redux/messages/slice";
 import Message from "../Message/Message";
 import { useState } from "react";
 
@@ -13,18 +12,32 @@ const Messages = () => {
   const { token } = useSelector(selectAuthData);
   const dispatch = useDispatch();
   const { pageToken } = useSelector(selectMessagesData);
-  const {changePage, onChangePage} = useState();
+  const [changePage, setChangePage] = useState([]);
+  const [changePagePrev, setChangePagePrev] = useState(1);
+  console.log("1",pageToken)
+  console.log("2",changePage)
+  console.log("3",changePage[changePagePrev-2])
+  console.log("4",changePagePrev)
+const onChangePage = () => {
+  setChangePage([...changePage, pageToken])
+  setChangePagePrev(changePagePrev + 1)
+ 
+ }
+ const onChangePagePrev = () => {
+  console.log("hg")
+
+  dispatch(getMessages({ token, pageToken:changePage[changePagePrev-2] }));
+ 
+ }
 
   useEffect(() => {
     dispatch(getMessages({ token, pageToken }));
   }, [changePage]);
-  // if (!messages) {
-  //   return <>"Loading...";</>;
-  // }
+
   return (
     <div>
+      <Pagination onChangePage={onChangePage} onChangePagePrev={onChangePagePrev}/>
       <Message />
-      <Pagination onChangePage={onChangePage} />
     </div>
   );
 };
