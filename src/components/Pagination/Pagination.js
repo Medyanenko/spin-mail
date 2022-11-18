@@ -2,7 +2,6 @@ import React from "react";
 import s from "./Pagination.module.css";
 
 const Pagination = ({ onChangePage, onChangePagePrev, changePagePrev }) => {
-  console.log("jkhygyugh", changePagePrev.lenght);
   if (changePagePrev < 2) {
     return (
       <div className={s.paginationBlock}>

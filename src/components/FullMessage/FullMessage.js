@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { selectAuthData } from "../../redux/auth/selector";
 import s from "./FullMessage.module.css";
-import { Base64 } from 'js-base64';
+import { Base64 } from "js-base64";
 
 const FullMessage = () => {
   const { id } = useParams();
@@ -12,6 +12,7 @@ const FullMessage = () => {
   const [fullTextMessage, setFullTextMessage] = useState();
   const [snippedTextMessage, setSnipedTextMessage] = useState();
   const [metaDataMessage, setMetaDataMessage] = useState();
+  const [isShowMore, setIsShowMore] = useState(false);
   const { token } = useSelector(selectAuthData);
   useEffect(() => {
     async function fetchMessage() {
@@ -30,7 +31,7 @@ const FullMessage = () => {
             data.payload.headers.map((data) => Object.values(data))
           )
         );
-        setSnipedTextMessage(data.snippet)
+        setSnipedTextMessage(data.snippet);
       } catch (error) {
         console.error("don't have message data");
         navigate("/");
@@ -46,7 +47,6 @@ const FullMessage = () => {
           }
         );
 
-       
         setFullTextMessage(Base64.decode(data.raw));
       } catch (error) {
         console.error("don't have message text");
@@ -63,6 +63,9 @@ const FullMessage = () => {
   }
   return (
     <div className={s.fullMessageBlock}>
+      <Link to="/" className={s.fullMessageButton}>
+        <span>⟵ Back</span>
+      </Link>
       <h2 className={s.fullMessageTitle}>{metaDataMessage.Subject}</h2>
       <div className={s.fullMessageInfo}>
         <p>{metaDataMessage.Date}</p>
@@ -70,12 +73,16 @@ const FullMessage = () => {
         <p>{metaDataMessage.To}</p>
       </div>
       <div className={s.fullMessageText}>{snippedTextMessage}</div>
-      <div className={s.fullMessageText}>{fullTextMessage}</div>
-      <div></div>
 
-      <Link to="/" className={s.fullMessageButton}>
-        <span>Назад</span>
-      </Link>
+      <button
+        className={s.fullMessageButton}
+        onClick={() => setIsShowMore(true)}
+      >
+        Show more...
+      </button>
+      {isShowMore && <div>{fullTextMessage}</div>}
+
+      {/* <div className={s.fullMessageText}>{fullTextMessage}</div> */}
     </div>
   );
 };

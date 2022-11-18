@@ -19,7 +19,7 @@ function App() {
             <div className="app-wrapper-content">
               <Routes>
                 <Route path="/message/:id" element={<FullMessage />} />
-                <Route exact path="/" element={<Messages />} />
+                <Route exact path="*" element={<Messages />} />
               </Routes>
             </div>
           </div>
