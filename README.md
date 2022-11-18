@@ -14,16 +14,10 @@
 4.Стилізовано за допомогою методології style module.
 
 ### Technical stack:
--react
-
--react-redux
-
--reduxjs/toolkit
-
--react-router-dom
-
--react-oauth/google
-
--axios
-
--js-base64
+- react
+- react-redux
+- reduxjs/toolkit
+- react-router-dom
+- react-oauth/google
+- axios
+- js-base64
